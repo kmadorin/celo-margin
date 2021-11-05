@@ -1,0 +1,3607 @@
+{
+  "contractName": "IStableDebtToken",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "currentBalance",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "balanceIncrease",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "avgStableRate",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newTotalSupply",
+          "type": "uint256"
+        }
+      ],
+      "name": "Burn",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "onBehalfOf",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "currentBalance",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "balanceIncrease",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newRate",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "avgStableRate",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newTotalSupply",
+          "type": "uint256"
+        }
+      ],
+      "name": "Mint",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "delegatee",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "approveDelegation",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "fromUser",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "toUser",
+          "type": "address"
+        }
+      ],
+      "name": "borrowAllowance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "onBehalfOf",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "rate",
+          "type": "uint256"
+        }
+      ],
+      "name": "mint",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "burn",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAverageStableRate",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "getUserStableRate",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "getUserLastUpdated",
+      "outputs": [
+        {
+          "internalType": "uint40",
+          "name": "",
+          "type": "uint40"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getSupplyData",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint40",
+          "name": "",
+          "type": "uint40"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getTotalSupplyLastUpdated",
+      "outputs": [
+        {
+          "internalType": "uint40",
+          "name": "",
+          "type": "uint40"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getTotalSupplyAndAvgRate",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "principalBalanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"currentBalance\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"balanceIncrease\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"avgStableRate\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newTotalSupply\",\"type\":\"uint256\"}],\"name\":\"Burn\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"onBehalfOf\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"currentBalance\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"balanceIncrease\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newRate\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"avgStableRate\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newTotalSupply\",\"type\":\"uint256\"}],\"name\":\"Mint\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"delegatee\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"approveDelegation\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"fromUser\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"toUser\",\"type\":\"address\"}],\"name\":\"borrowAllowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAverageStableRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSupplyData\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint40\",\"name\":\"\",\"type\":\"uint40\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getTotalSupplyAndAvgRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getTotalSupplyLastUpdated\",\"outputs\":[{\"internalType\":\"uint40\",\"name\":\"\",\"type\":\"uint40\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"getUserLastUpdated\",\"outputs\":[{\"internalType\":\"uint40\",\"name\":\"\",\"type\":\"uint40\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"getUserStableRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"onBehalfOf\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"rate\",\"type\":\"uint256\"}],\"name\":\"mint\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"principalBalanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Aave*\",\"details\":\"It does not inherit from IERC20 to save in code size\",\"events\":{\"Burn(address,uint256,uint256,uint256,uint256,uint256)\":{\"details\":\"Emitted when new stable debt is burned\",\"params\":{\"amount\":\"The amount being burned\",\"avgStableRate\":\"The new average stable rate after the burning\",\"balanceIncrease\":\"The the increase in balance since the last action of the user\",\"currentBalance\":\"The current balance of the user\",\"newTotalSupply\":\"The new total supply of the stable debt token after the action*\",\"user\":\"The address of the user\"}},\"Mint(address,address,uint256,uint256,uint256,uint256,uint256,uint256)\":{\"details\":\"Emitted when new stable debt is minted\",\"params\":{\"amount\":\"The amount minted\",\"avgStableRate\":\"The new average stable rate after the minting\",\"balanceIncrease\":\"The increase in balance since the last action of the user\",\"currentBalance\":\"The current balance of the user\",\"newRate\":\"The rate of the debt after the minting\",\"newTotalSupply\":\"The new total supply of the stable debt token after the action*\",\"onBehalfOf\":\"The recipient of stable debt tokens\",\"user\":\"The address of the user who triggered the minting\"}}},\"kind\":\"dev\",\"methods\":{\"approveDelegation(address,uint256)\":{\"details\":\"delegates borrowing power to a user on the specific debt token\",\"params\":{\"amount\":\"the maximum amount being delegated. Delegation will still respect the liquidation constraints (even if delegated, a delegatee cannot force a delegator HF to go below 1)*\",\"delegatee\":\"the address receiving the delegated borrowing power\"}},\"borrowAllowance(address,address)\":{\"details\":\"returns the borrow allowance of the user\",\"params\":{\"fromUser\":\"The user to giving allowance\",\"toUser\":\"The user to give allowance to\"},\"returns\":{\"_0\":\"the current allowance of toUser*\"}},\"burn(address,uint256)\":{\"details\":\"Burns debt of `user` - The resulting rate is the weighted average between the rate of the new debt and the rate of the previous debt\",\"params\":{\"amount\":\"The amount of debt tokens getting burned*\",\"user\":\"The address of the user getting his debt burned\"}},\"getAverageStableRate()\":{\"details\":\"Returns the average rate of all the stable rate loans.\",\"returns\":{\"_0\":\"The average stable rate*\"}},\"getSupplyData()\":{\"details\":\"Returns the principal, the total supply and the average stable rate*\"},\"getTotalSupplyAndAvgRate()\":{\"details\":\"Returns the total supply and the average stable rate*\"},\"getTotalSupplyLastUpdated()\":{\"details\":\"Returns the timestamp of the last update of the total supply\",\"returns\":{\"_0\":\"The timestamp*\"}},\"getUserLastUpdated(address)\":{\"details\":\"Returns the timestamp of the last update of the user\",\"returns\":{\"_0\":\"The timestamp*\"}},\"getUserStableRate(address)\":{\"details\":\"Returns the stable rate of the user debt\",\"returns\":{\"_0\":\"The stable rate of the user*\"}},\"mint(address,address,uint256,uint256)\":{\"details\":\"Mints debt token to the `onBehalfOf` address. - The resulting rate is the weighted average between the rate of the new debt and the rate of the previous debt\",\"params\":{\"amount\":\"The amount of debt tokens to mint\",\"onBehalfOf\":\"The address receiving the debt tokens\",\"rate\":\"The rate of the debt being minted*\",\"user\":\"The address receiving the borrowed underlying, being the delegatee in case of credit delegate, or same as `onBehalfOf` otherwise\"}},\"principalBalanceOf(address)\":{\"details\":\"Returns the principal debt balance of the user\",\"returns\":{\"_0\":\"The debt balance of the user since the last burn/mint action*\"}}},\"title\":\"IStableDebtToken\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Defines the interface for the stable debt token\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IStableDebtToken.sol\":\"IStableDebtToken\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IStableDebtToken.sol\":{\"keccak256\":\"0xf5b1f750943957f28e4e3e1f8743953b8e5271f342fc0bb96bc1cbffc4abfb0d\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://dc44c0015de6d83af01fb2404e5df8d574becff25138012a42d0c733ec4f99a2\",\"dweb:/ipfs/Qma6BynaChjVT5rX2QoyibKimAtu9EJXAQTEfuvTfTkUXL\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: agpl-3.0\npragma solidity ^0.8.0;\n\n/**\n * @title IStableDebtToken\n * @notice Defines the interface for the stable debt token\n * @dev It does not inherit from IERC20 to save in code size\n * @author Aave\n **/\n\ninterface IStableDebtToken {\n    /**\n     * @dev Emitted when new stable debt is minted\n     * @param user The address of the user who triggered the minting\n     * @param onBehalfOf The recipient of stable debt tokens\n     * @param amount The amount minted\n     * @param currentBalance The current balance of the user\n     * @param balanceIncrease The increase in balance since the last action of the user\n     * @param newRate The rate of the debt after the minting\n     * @param avgStableRate The new average stable rate after the minting\n     * @param newTotalSupply The new total supply of the stable debt token after the action\n     **/\n    event Mint(\n        address indexed user,\n        address indexed onBehalfOf,\n        uint256 amount,\n        uint256 currentBalance,\n        uint256 balanceIncrease,\n        uint256 newRate,\n        uint256 avgStableRate,\n        uint256 newTotalSupply\n    );\n\n    /**\n     * @dev Emitted when new stable debt is burned\n     * @param user The address of the user\n     * @param amount The amount being burned\n     * @param currentBalance The current balance of the user\n     * @param balanceIncrease The the increase in balance since the last action of the user\n     * @param avgStableRate The new average stable rate after the burning\n     * @param newTotalSupply The new total supply of the stable debt token after the action\n     **/\n    event Burn(\n        address indexed user,\n        uint256 amount,\n        uint256 currentBalance,\n        uint256 balanceIncrease,\n        uint256 avgStableRate,\n        uint256 newTotalSupply\n    );\n\n    /**\n     * @dev delegates borrowing power to a user on the specific debt token\n     * @param delegatee the address receiving the delegated borrowing power\n     * @param amount the maximum amount being delegated. Delegation will still\n     * respect the liquidation constraints (even if delegated, a delegatee cannot\n     * force a delegator HF to go below 1)\n     **/\n    function approveDelegation(address delegatee, uint256 amount) external;\n\n    /**\n     * @dev returns the borrow allowance of the user\n     * @param fromUser The user to giving allowance\n     * @param toUser The user to give allowance to\n     * @return the current allowance of toUser\n     **/\n    function borrowAllowance(address fromUser, address toUser) external view returns (uint256);\n\n    /**\n     * @dev Mints debt token to the `onBehalfOf` address.\n     * - The resulting rate is the weighted average between the rate of the new debt\n     * and the rate of the previous debt\n     * @param user The address receiving the borrowed underlying, being the delegatee in case\n     * of credit delegate, or same as `onBehalfOf` otherwise\n     * @param onBehalfOf The address receiving the debt tokens\n     * @param amount The amount of debt tokens to mint\n     * @param rate The rate of the debt being minted\n     **/\n    function mint(\n        address user,\n        address onBehalfOf,\n        uint256 amount,\n        uint256 rate\n    ) external returns (bool);\n\n    /**\n     * @dev Burns debt of `user`\n     * - The resulting rate is the weighted average between the rate of the new debt\n     * and the rate of the previous debt\n     * @param user The address of the user getting his debt burned\n     * @param amount The amount of debt tokens getting burned\n     **/\n    function burn(address user, uint256 amount) external;\n\n    /**\n     * @dev Returns the average rate of all the stable rate loans.\n     * @return The average stable rate\n     **/\n    function getAverageStableRate() external view returns (uint256);\n\n    /**\n     * @dev Returns the stable rate of the user debt\n     * @return The stable rate of the user\n     **/\n    function getUserStableRate(address user) external view returns (uint256);\n\n    /**\n     * @dev Returns the timestamp of the last update of the user\n     * @return The timestamp\n     **/\n    function getUserLastUpdated(address user) external view returns (uint40);\n\n    /**\n     * @dev Returns the principal, the total supply and the average stable rate\n     **/\n    function getSupplyData()\n    external\n    view\n    returns (\n        uint256,\n        uint256,\n        uint256,\n        uint40\n    );\n\n    /**\n     * @dev Returns the timestamp of the last update of the total supply\n     * @return The timestamp\n     **/\n    function getTotalSupplyLastUpdated() external view returns (uint40);\n\n    /**\n     * @dev Returns the total supply and the average stable rate\n     **/\n    function getTotalSupplyAndAvgRate() external view returns (uint256, uint256);\n\n    /**\n     * @dev Returns the principal debt balance of the user\n     * @return The debt balance of the user since the last burn/mint action\n     **/\n    function principalBalanceOf(address user) external view returns (uint256);\n}\n",
+  "sourcePath": "/Users/kirillmadorin/Desktop/Projects/celo-camp/celo-margin-truffle/contracts/interfaces/IStableDebtToken.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/IStableDebtToken.sol",
+    "exportedSymbols": {
+      "IStableDebtToken": [
+        2194
+      ]
+    },
+    "id": 2195,
+    "license": "agpl-3.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2062,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:23:11"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 2063,
+          "nodeType": "StructuredDocumentation",
+          "src": "62:171:11",
+          "text": " @title IStableDebtToken\n @notice Defines the interface for the stable debt token\n @dev It does not inherit from IERC20 to save in code size\n @author Aave*"
+        },
+        "fullyImplemented": false,
+        "id": 2194,
+        "linearizedBaseContracts": [
+          2194
+        ],
+        "name": "IStableDebtToken",
+        "nameLocation": "245:16:11",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 2064,
+              "nodeType": "StructuredDocumentation",
+              "src": "268:608:11",
+              "text": " @dev Emitted when new stable debt is minted\n @param user The address of the user who triggered the minting\n @param onBehalfOf The recipient of stable debt tokens\n @param amount The amount minted\n @param currentBalance The current balance of the user\n @param balanceIncrease The increase in balance since the last action of the user\n @param newRate The rate of the debt after the minting\n @param avgStableRate The new average stable rate after the minting\n @param newTotalSupply The new total supply of the stable debt token after the action*"
+            },
+            "id": 2082,
+            "name": "Mint",
+            "nameLocation": "887:4:11",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2081,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2066,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "user",
+                  "nameLocation": "917:4:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2082,
+                  "src": "901:20:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2065,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "901:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2068,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "onBehalfOf",
+                  "nameLocation": "947:10:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2082,
+                  "src": "931:26:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2067,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "931:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2070,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "975:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2082,
+                  "src": "967:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2069,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "967:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2072,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "currentBalance",
+                  "nameLocation": "999:14:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2082,
+                  "src": "991:22:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2071,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "991:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2074,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "balanceIncrease",
+                  "nameLocation": "1031:15:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2082,
+                  "src": "1023:23:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2073,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1023:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2076,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "newRate",
+                  "nameLocation": "1064:7:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2082,
+                  "src": "1056:15:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2075,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1056:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2078,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "avgStableRate",
+                  "nameLocation": "1089:13:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2082,
+                  "src": "1081:21:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2077,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1081:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2080,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "newTotalSupply",
+                  "nameLocation": "1120:14:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2082,
+                  "src": "1112:22:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2079,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1112:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "891:249:11"
+            },
+            "src": "881:260:11"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 2083,
+              "nodeType": "StructuredDocumentation",
+              "src": "1147:470:11",
+              "text": " @dev Emitted when new stable debt is burned\n @param user The address of the user\n @param amount The amount being burned\n @param currentBalance The current balance of the user\n @param balanceIncrease The the increase in balance since the last action of the user\n @param avgStableRate The new average stable rate after the burning\n @param newTotalSupply The new total supply of the stable debt token after the action*"
+            },
+            "id": 2097,
+            "name": "Burn",
+            "nameLocation": "1628:4:11",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2096,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2085,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "user",
+                  "nameLocation": "1658:4:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2097,
+                  "src": "1642:20:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2084,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1642:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2087,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "1680:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2097,
+                  "src": "1672:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2086,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1672:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2089,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "currentBalance",
+                  "nameLocation": "1704:14:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2097,
+                  "src": "1696:22:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2088,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1696:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2091,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "balanceIncrease",
+                  "nameLocation": "1736:15:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2097,
+                  "src": "1728:23:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2090,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1728:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2093,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "avgStableRate",
+                  "nameLocation": "1769:13:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2097,
+                  "src": "1761:21:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2092,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1761:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2095,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "newTotalSupply",
+                  "nameLocation": "1800:14:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2097,
+                  "src": "1792:22:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2094,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1792:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1632:188:11"
+            },
+            "src": "1622:199:11"
+          },
+          {
+            "documentation": {
+              "id": 2098,
+              "nodeType": "StructuredDocumentation",
+              "src": "1827:367:11",
+              "text": " @dev delegates borrowing power to a user on the specific debt token\n @param delegatee the address receiving the delegated borrowing power\n @param amount the maximum amount being delegated. Delegation will still\n respect the liquidation constraints (even if delegated, a delegatee cannot\n force a delegator HF to go below 1)*"
+            },
+            "functionSelector": "c04a8a10",
+            "id": 2105,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "approveDelegation",
+            "nameLocation": "2208:17:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2103,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2100,
+                  "mutability": "mutable",
+                  "name": "delegatee",
+                  "nameLocation": "2234:9:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2105,
+                  "src": "2226:17:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2099,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2226:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2102,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "2253:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2105,
+                  "src": "2245:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2101,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2245:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2225:35:11"
+            },
+            "returnParameters": {
+              "id": 2104,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2269:0:11"
+            },
+            "scope": 2194,
+            "src": "2199:71:11",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 2106,
+              "nodeType": "StructuredDocumentation",
+              "src": "2276:215:11",
+              "text": " @dev returns the borrow allowance of the user\n @param fromUser The user to giving allowance\n @param toUser The user to give allowance to\n @return the current allowance of toUser*"
+            },
+            "functionSelector": "6bd76d24",
+            "id": 2115,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "borrowAllowance",
+            "nameLocation": "2505:15:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2111,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2108,
+                  "mutability": "mutable",
+                  "name": "fromUser",
+                  "nameLocation": "2529:8:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2115,
+                  "src": "2521:16:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2107,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2521:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2110,
+                  "mutability": "mutable",
+                  "name": "toUser",
+                  "nameLocation": "2547:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2115,
+                  "src": "2539:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2109,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2539:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2520:34:11"
+            },
+            "returnParameters": {
+              "id": 2114,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2113,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2115,
+                  "src": "2578:7:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2112,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2578:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2577:9:11"
+            },
+            "scope": 2194,
+            "src": "2496:91:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 2116,
+              "nodeType": "StructuredDocumentation",
+              "src": "2593:522:11",
+              "text": " @dev Mints debt token to the `onBehalfOf` address.\n - The resulting rate is the weighted average between the rate of the new debt\n and the rate of the previous debt\n @param user The address receiving the borrowed underlying, being the delegatee in case\n of credit delegate, or same as `onBehalfOf` otherwise\n @param onBehalfOf The address receiving the debt tokens\n @param amount The amount of debt tokens to mint\n @param rate The rate of the debt being minted*"
+            },
+            "functionSelector": "b3f1c93d",
+            "id": 2129,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "mint",
+            "nameLocation": "3129:4:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2125,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2118,
+                  "mutability": "mutable",
+                  "name": "user",
+                  "nameLocation": "3151:4:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2129,
+                  "src": "3143:12:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2117,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3143:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2120,
+                  "mutability": "mutable",
+                  "name": "onBehalfOf",
+                  "nameLocation": "3173:10:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2129,
+                  "src": "3165:18:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2119,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3165:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2122,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "3201:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2129,
+                  "src": "3193:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2121,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3193:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2124,
+                  "mutability": "mutable",
+                  "name": "rate",
+                  "nameLocation": "3225:4:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2129,
+                  "src": "3217:12:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2123,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3217:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3133:102:11"
+            },
+            "returnParameters": {
+              "id": 2128,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2127,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2129,
+                  "src": "3254:4:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 2126,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3254:4:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3253:6:11"
+            },
+            "scope": 2194,
+            "src": "3120:140:11",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 2130,
+              "nodeType": "StructuredDocumentation",
+              "src": "3266:300:11",
+              "text": " @dev Burns debt of `user`\n - The resulting rate is the weighted average between the rate of the new debt\n and the rate of the previous debt\n @param user The address of the user getting his debt burned\n @param amount The amount of debt tokens getting burned*"
+            },
+            "functionSelector": "9dc29fac",
+            "id": 2137,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "burn",
+            "nameLocation": "3580:4:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2135,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2132,
+                  "mutability": "mutable",
+                  "name": "user",
+                  "nameLocation": "3593:4:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2137,
+                  "src": "3585:12:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2131,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3585:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2134,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "3607:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2137,
+                  "src": "3599:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2133,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3599:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3584:30:11"
+            },
+            "returnParameters": {
+              "id": 2136,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3623:0:11"
+            },
+            "scope": 2194,
+            "src": "3571:53:11",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 2138,
+              "nodeType": "StructuredDocumentation",
+              "src": "3630:118:11",
+              "text": " @dev Returns the average rate of all the stable rate loans.\n @return The average stable rate*"
+            },
+            "functionSelector": "90f6fcf2",
+            "id": 2143,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAverageStableRate",
+            "nameLocation": "3762:20:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2139,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3782:2:11"
+            },
+            "returnParameters": {
+              "id": 2142,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2141,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2143,
+                  "src": "3808:7:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2140,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3808:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3807:9:11"
+            },
+            "scope": 2194,
+            "src": "3753:64:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 2144,
+              "nodeType": "StructuredDocumentation",
+              "src": "3823:108:11",
+              "text": " @dev Returns the stable rate of the user debt\n @return The stable rate of the user*"
+            },
+            "functionSelector": "e78c9b3b",
+            "id": 2151,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getUserStableRate",
+            "nameLocation": "3945:17:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2147,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2146,
+                  "mutability": "mutable",
+                  "name": "user",
+                  "nameLocation": "3971:4:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2151,
+                  "src": "3963:12:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2145,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3963:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3962:14:11"
+            },
+            "returnParameters": {
+              "id": 2150,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2149,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2151,
+                  "src": "4000:7:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2148,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4000:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3999:9:11"
+            },
+            "scope": 2194,
+            "src": "3936:73:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 2152,
+              "nodeType": "StructuredDocumentation",
+              "src": "4015:106:11",
+              "text": " @dev Returns the timestamp of the last update of the user\n @return The timestamp*"
+            },
+            "functionSelector": "79ce6b8c",
+            "id": 2159,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getUserLastUpdated",
+            "nameLocation": "4135:18:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2155,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2154,
+                  "mutability": "mutable",
+                  "name": "user",
+                  "nameLocation": "4162:4:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2159,
+                  "src": "4154:12:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2153,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4154:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4153:14:11"
+            },
+            "returnParameters": {
+              "id": 2158,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2157,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2159,
+                  "src": "4191:6:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint40",
+                    "typeString": "uint40"
+                  },
+                  "typeName": {
+                    "id": 2156,
+                    "name": "uint40",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4191:6:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint40",
+                      "typeString": "uint40"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4190:8:11"
+            },
+            "scope": 2194,
+            "src": "4126:73:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 2160,
+              "nodeType": "StructuredDocumentation",
+              "src": "4205:92:11",
+              "text": " @dev Returns the principal, the total supply and the average stable rate*"
+            },
+            "functionSelector": "79774338",
+            "id": 2171,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getSupplyData",
+            "nameLocation": "4311:13:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2161,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4324:2:11"
+            },
+            "returnParameters": {
+              "id": 2170,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2163,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2171,
+                  "src": "4371:7:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2162,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4371:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2165,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2171,
+                  "src": "4388:7:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2164,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4388:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2167,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2171,
+                  "src": "4405:7:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2166,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4405:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2169,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2171,
+                  "src": "4422:6:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint40",
+                    "typeString": "uint40"
+                  },
+                  "typeName": {
+                    "id": 2168,
+                    "name": "uint40",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4422:6:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint40",
+                      "typeString": "uint40"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4361:73:11"
+            },
+            "scope": 2194,
+            "src": "4302:133:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 2172,
+              "nodeType": "StructuredDocumentation",
+              "src": "4441:114:11",
+              "text": " @dev Returns the timestamp of the last update of the total supply\n @return The timestamp*"
+            },
+            "functionSelector": "e7484890",
+            "id": 2177,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getTotalSupplyLastUpdated",
+            "nameLocation": "4569:25:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2173,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4594:2:11"
+            },
+            "returnParameters": {
+              "id": 2176,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2175,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2177,
+                  "src": "4620:6:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint40",
+                    "typeString": "uint40"
+                  },
+                  "typeName": {
+                    "id": 2174,
+                    "name": "uint40",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4620:6:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint40",
+                      "typeString": "uint40"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4619:8:11"
+            },
+            "scope": 2194,
+            "src": "4560:68:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 2178,
+              "nodeType": "StructuredDocumentation",
+              "src": "4634:77:11",
+              "text": " @dev Returns the total supply and the average stable rate*"
+            },
+            "functionSelector": "f731e9be",
+            "id": 2185,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getTotalSupplyAndAvgRate",
+            "nameLocation": "4725:24:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2179,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4749:2:11"
+            },
+            "returnParameters": {
+              "id": 2184,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2181,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2185,
+                  "src": "4775:7:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2180,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4775:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2183,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2185,
+                  "src": "4784:7:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2182,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4784:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4774:18:11"
+            },
+            "scope": 2194,
+            "src": "4716:77:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 2186,
+              "nodeType": "StructuredDocumentation",
+              "src": "4799:147:11",
+              "text": " @dev Returns the principal debt balance of the user\n @return The debt balance of the user since the last burn/mint action*"
+            },
+            "functionSelector": "c634dfaa",
+            "id": 2193,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "principalBalanceOf",
+            "nameLocation": "4960:18:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2189,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2188,
+                  "mutability": "mutable",
+                  "name": "user",
+                  "nameLocation": "4987:4:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2193,
+                  "src": "4979:12:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2187,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4979:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4978:14:11"
+            },
+            "returnParameters": {
+              "id": 2192,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2191,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2193,
+                  "src": "5016:7:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2190,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5016:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5015:9:11"
+            },
+            "scope": 2194,
+            "src": "4951:74:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2195,
+        "src": "235:4792:11",
+        "usedErrors": []
+      }
+    ],
+    "src": "37:4991:11"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/interfaces/IStableDebtToken.sol",
+    "exportedSymbols": {
+      "IStableDebtToken": [
+        2194
+      ]
+    },
+    "id": 2195,
+    "license": "agpl-3.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2062,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:23:11"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 2063,
+          "nodeType": "StructuredDocumentation",
+          "src": "62:171:11",
+          "text": " @title IStableDebtToken\n @notice Defines the interface for the stable debt token\n @dev It does not inherit from IERC20 to save in code size\n @author Aave*"
+        },
+        "fullyImplemented": false,
+        "id": 2194,
+        "linearizedBaseContracts": [
+          2194
+        ],
+        "name": "IStableDebtToken",
+        "nameLocation": "245:16:11",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 2064,
+              "nodeType": "StructuredDocumentation",
+              "src": "268:608:11",
+              "text": " @dev Emitted when new stable debt is minted\n @param user The address of the user who triggered the minting\n @param onBehalfOf The recipient of stable debt tokens\n @param amount The amount minted\n @param currentBalance The current balance of the user\n @param balanceIncrease The increase in balance since the last action of the user\n @param newRate The rate of the debt after the minting\n @param avgStableRate The new average stable rate after the minting\n @param newTotalSupply The new total supply of the stable debt token after the action*"
+            },
+            "id": 2082,
+            "name": "Mint",
+            "nameLocation": "887:4:11",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2081,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2066,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "user",
+                  "nameLocation": "917:4:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2082,
+                  "src": "901:20:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2065,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "901:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2068,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "onBehalfOf",
+                  "nameLocation": "947:10:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2082,
+                  "src": "931:26:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2067,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "931:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2070,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "975:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2082,
+                  "src": "967:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2069,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "967:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2072,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "currentBalance",
+                  "nameLocation": "999:14:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2082,
+                  "src": "991:22:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2071,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "991:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2074,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "balanceIncrease",
+                  "nameLocation": "1031:15:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2082,
+                  "src": "1023:23:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2073,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1023:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2076,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "newRate",
+                  "nameLocation": "1064:7:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2082,
+                  "src": "1056:15:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2075,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1056:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2078,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "avgStableRate",
+                  "nameLocation": "1089:13:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2082,
+                  "src": "1081:21:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2077,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1081:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2080,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "newTotalSupply",
+                  "nameLocation": "1120:14:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2082,
+                  "src": "1112:22:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2079,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1112:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "891:249:11"
+            },
+            "src": "881:260:11"
+          },
+          {
+            "anonymous": false,
+            "documentation": {
+              "id": 2083,
+              "nodeType": "StructuredDocumentation",
+              "src": "1147:470:11",
+              "text": " @dev Emitted when new stable debt is burned\n @param user The address of the user\n @param amount The amount being burned\n @param currentBalance The current balance of the user\n @param balanceIncrease The the increase in balance since the last action of the user\n @param avgStableRate The new average stable rate after the burning\n @param newTotalSupply The new total supply of the stable debt token after the action*"
+            },
+            "id": 2097,
+            "name": "Burn",
+            "nameLocation": "1628:4:11",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2096,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2085,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "user",
+                  "nameLocation": "1658:4:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2097,
+                  "src": "1642:20:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2084,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1642:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2087,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "1680:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2097,
+                  "src": "1672:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2086,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1672:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2089,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "currentBalance",
+                  "nameLocation": "1704:14:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2097,
+                  "src": "1696:22:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2088,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1696:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2091,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "balanceIncrease",
+                  "nameLocation": "1736:15:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2097,
+                  "src": "1728:23:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2090,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1728:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2093,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "avgStableRate",
+                  "nameLocation": "1769:13:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2097,
+                  "src": "1761:21:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2092,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1761:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2095,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "newTotalSupply",
+                  "nameLocation": "1800:14:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2097,
+                  "src": "1792:22:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2094,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1792:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1632:188:11"
+            },
+            "src": "1622:199:11"
+          },
+          {
+            "documentation": {
+              "id": 2098,
+              "nodeType": "StructuredDocumentation",
+              "src": "1827:367:11",
+              "text": " @dev delegates borrowing power to a user on the specific debt token\n @param delegatee the address receiving the delegated borrowing power\n @param amount the maximum amount being delegated. Delegation will still\n respect the liquidation constraints (even if delegated, a delegatee cannot\n force a delegator HF to go below 1)*"
+            },
+            "functionSelector": "c04a8a10",
+            "id": 2105,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "approveDelegation",
+            "nameLocation": "2208:17:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2103,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2100,
+                  "mutability": "mutable",
+                  "name": "delegatee",
+                  "nameLocation": "2234:9:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2105,
+                  "src": "2226:17:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2099,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2226:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2102,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "2253:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2105,
+                  "src": "2245:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2101,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2245:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2225:35:11"
+            },
+            "returnParameters": {
+              "id": 2104,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2269:0:11"
+            },
+            "scope": 2194,
+            "src": "2199:71:11",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 2106,
+              "nodeType": "StructuredDocumentation",
+              "src": "2276:215:11",
+              "text": " @dev returns the borrow allowance of the user\n @param fromUser The user to giving allowance\n @param toUser The user to give allowance to\n @return the current allowance of toUser*"
+            },
+            "functionSelector": "6bd76d24",
+            "id": 2115,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "borrowAllowance",
+            "nameLocation": "2505:15:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2111,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2108,
+                  "mutability": "mutable",
+                  "name": "fromUser",
+                  "nameLocation": "2529:8:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2115,
+                  "src": "2521:16:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2107,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2521:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2110,
+                  "mutability": "mutable",
+                  "name": "toUser",
+                  "nameLocation": "2547:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2115,
+                  "src": "2539:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2109,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2539:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2520:34:11"
+            },
+            "returnParameters": {
+              "id": 2114,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2113,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2115,
+                  "src": "2578:7:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2112,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2578:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2577:9:11"
+            },
+            "scope": 2194,
+            "src": "2496:91:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 2116,
+              "nodeType": "StructuredDocumentation",
+              "src": "2593:522:11",
+              "text": " @dev Mints debt token to the `onBehalfOf` address.\n - The resulting rate is the weighted average between the rate of the new debt\n and the rate of the previous debt\n @param user The address receiving the borrowed underlying, being the delegatee in case\n of credit delegate, or same as `onBehalfOf` otherwise\n @param onBehalfOf The address receiving the debt tokens\n @param amount The amount of debt tokens to mint\n @param rate The rate of the debt being minted*"
+            },
+            "functionSelector": "b3f1c93d",
+            "id": 2129,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "mint",
+            "nameLocation": "3129:4:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2125,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2118,
+                  "mutability": "mutable",
+                  "name": "user",
+                  "nameLocation": "3151:4:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2129,
+                  "src": "3143:12:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2117,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3143:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2120,
+                  "mutability": "mutable",
+                  "name": "onBehalfOf",
+                  "nameLocation": "3173:10:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2129,
+                  "src": "3165:18:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2119,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3165:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2122,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "3201:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2129,
+                  "src": "3193:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2121,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3193:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2124,
+                  "mutability": "mutable",
+                  "name": "rate",
+                  "nameLocation": "3225:4:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2129,
+                  "src": "3217:12:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2123,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3217:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3133:102:11"
+            },
+            "returnParameters": {
+              "id": 2128,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2127,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2129,
+                  "src": "3254:4:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 2126,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3254:4:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3253:6:11"
+            },
+            "scope": 2194,
+            "src": "3120:140:11",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 2130,
+              "nodeType": "StructuredDocumentation",
+              "src": "3266:300:11",
+              "text": " @dev Burns debt of `user`\n - The resulting rate is the weighted average between the rate of the new debt\n and the rate of the previous debt\n @param user The address of the user getting his debt burned\n @param amount The amount of debt tokens getting burned*"
+            },
+            "functionSelector": "9dc29fac",
+            "id": 2137,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "burn",
+            "nameLocation": "3580:4:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2135,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2132,
+                  "mutability": "mutable",
+                  "name": "user",
+                  "nameLocation": "3593:4:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2137,
+                  "src": "3585:12:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2131,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3585:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2134,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "3607:6:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2137,
+                  "src": "3599:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2133,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3599:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3584:30:11"
+            },
+            "returnParameters": {
+              "id": 2136,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3623:0:11"
+            },
+            "scope": 2194,
+            "src": "3571:53:11",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 2138,
+              "nodeType": "StructuredDocumentation",
+              "src": "3630:118:11",
+              "text": " @dev Returns the average rate of all the stable rate loans.\n @return The average stable rate*"
+            },
+            "functionSelector": "90f6fcf2",
+            "id": 2143,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAverageStableRate",
+            "nameLocation": "3762:20:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2139,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3782:2:11"
+            },
+            "returnParameters": {
+              "id": 2142,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2141,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2143,
+                  "src": "3808:7:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2140,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3808:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3807:9:11"
+            },
+            "scope": 2194,
+            "src": "3753:64:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 2144,
+              "nodeType": "StructuredDocumentation",
+              "src": "3823:108:11",
+              "text": " @dev Returns the stable rate of the user debt\n @return The stable rate of the user*"
+            },
+            "functionSelector": "e78c9b3b",
+            "id": 2151,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getUserStableRate",
+            "nameLocation": "3945:17:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2147,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2146,
+                  "mutability": "mutable",
+                  "name": "user",
+                  "nameLocation": "3971:4:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2151,
+                  "src": "3963:12:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2145,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3963:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3962:14:11"
+            },
+            "returnParameters": {
+              "id": 2150,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2149,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2151,
+                  "src": "4000:7:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2148,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4000:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3999:9:11"
+            },
+            "scope": 2194,
+            "src": "3936:73:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 2152,
+              "nodeType": "StructuredDocumentation",
+              "src": "4015:106:11",
+              "text": " @dev Returns the timestamp of the last update of the user\n @return The timestamp*"
+            },
+            "functionSelector": "79ce6b8c",
+            "id": 2159,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getUserLastUpdated",
+            "nameLocation": "4135:18:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2155,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2154,
+                  "mutability": "mutable",
+                  "name": "user",
+                  "nameLocation": "4162:4:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2159,
+                  "src": "4154:12:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2153,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4154:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4153:14:11"
+            },
+            "returnParameters": {
+              "id": 2158,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2157,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2159,
+                  "src": "4191:6:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint40",
+                    "typeString": "uint40"
+                  },
+                  "typeName": {
+                    "id": 2156,
+                    "name": "uint40",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4191:6:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint40",
+                      "typeString": "uint40"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4190:8:11"
+            },
+            "scope": 2194,
+            "src": "4126:73:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 2160,
+              "nodeType": "StructuredDocumentation",
+              "src": "4205:92:11",
+              "text": " @dev Returns the principal, the total supply and the average stable rate*"
+            },
+            "functionSelector": "79774338",
+            "id": 2171,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getSupplyData",
+            "nameLocation": "4311:13:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2161,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4324:2:11"
+            },
+            "returnParameters": {
+              "id": 2170,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2163,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2171,
+                  "src": "4371:7:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2162,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4371:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2165,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2171,
+                  "src": "4388:7:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2164,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4388:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2167,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2171,
+                  "src": "4405:7:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2166,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4405:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2169,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2171,
+                  "src": "4422:6:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint40",
+                    "typeString": "uint40"
+                  },
+                  "typeName": {
+                    "id": 2168,
+                    "name": "uint40",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4422:6:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint40",
+                      "typeString": "uint40"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4361:73:11"
+            },
+            "scope": 2194,
+            "src": "4302:133:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 2172,
+              "nodeType": "StructuredDocumentation",
+              "src": "4441:114:11",
+              "text": " @dev Returns the timestamp of the last update of the total supply\n @return The timestamp*"
+            },
+            "functionSelector": "e7484890",
+            "id": 2177,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getTotalSupplyLastUpdated",
+            "nameLocation": "4569:25:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2173,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4594:2:11"
+            },
+            "returnParameters": {
+              "id": 2176,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2175,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2177,
+                  "src": "4620:6:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint40",
+                    "typeString": "uint40"
+                  },
+                  "typeName": {
+                    "id": 2174,
+                    "name": "uint40",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4620:6:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint40",
+                      "typeString": "uint40"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4619:8:11"
+            },
+            "scope": 2194,
+            "src": "4560:68:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 2178,
+              "nodeType": "StructuredDocumentation",
+              "src": "4634:77:11",
+              "text": " @dev Returns the total supply and the average stable rate*"
+            },
+            "functionSelector": "f731e9be",
+            "id": 2185,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getTotalSupplyAndAvgRate",
+            "nameLocation": "4725:24:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2179,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4749:2:11"
+            },
+            "returnParameters": {
+              "id": 2184,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2181,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2185,
+                  "src": "4775:7:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2180,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4775:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2183,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2185,
+                  "src": "4784:7:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2182,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4784:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4774:18:11"
+            },
+            "scope": 2194,
+            "src": "4716:77:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 2186,
+              "nodeType": "StructuredDocumentation",
+              "src": "4799:147:11",
+              "text": " @dev Returns the principal debt balance of the user\n @return The debt balance of the user since the last burn/mint action*"
+            },
+            "functionSelector": "c634dfaa",
+            "id": 2193,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "principalBalanceOf",
+            "nameLocation": "4960:18:11",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2189,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2188,
+                  "mutability": "mutable",
+                  "name": "user",
+                  "nameLocation": "4987:4:11",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2193,
+                  "src": "4979:12:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2187,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4979:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4978:14:11"
+            },
+            "returnParameters": {
+              "id": 2192,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2191,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2193,
+                  "src": "5016:7:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2190,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5016:7:11",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5015:9:11"
+            },
+            "scope": 2194,
+            "src": "4951:74:11",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2195,
+        "src": "235:4792:11",
+        "usedErrors": []
+      }
+    ],
+    "src": "37:4991:11"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.4+commit.c7e474f2.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2021-11-01T10:35:00.530Z",
+  "devdoc": {
+    "author": "Aave*",
+    "details": "It does not inherit from IERC20 to save in code size",
+    "events": {
+      "Burn(address,uint256,uint256,uint256,uint256,uint256)": {
+        "details": "Emitted when new stable debt is burned",
+        "params": {
+          "amount": "The amount being burned",
+          "avgStableRate": "The new average stable rate after the burning",
+          "balanceIncrease": "The the increase in balance since the last action of the user",
+          "currentBalance": "The current balance of the user",
+          "newTotalSupply": "The new total supply of the stable debt token after the action*",
+          "user": "The address of the user"
+        }
+      },
+      "Mint(address,address,uint256,uint256,uint256,uint256,uint256,uint256)": {
+        "details": "Emitted when new stable debt is minted",
+        "params": {
+          "amount": "The amount minted",
+          "avgStableRate": "The new average stable rate after the minting",
+          "balanceIncrease": "The increase in balance since the last action of the user",
+          "currentBalance": "The current balance of the user",
+          "newRate": "The rate of the debt after the minting",
+          "newTotalSupply": "The new total supply of the stable debt token after the action*",
+          "onBehalfOf": "The recipient of stable debt tokens",
+          "user": "The address of the user who triggered the minting"
+        }
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "approveDelegation(address,uint256)": {
+        "details": "delegates borrowing power to a user on the specific debt token",
+        "params": {
+          "amount": "the maximum amount being delegated. Delegation will still respect the liquidation constraints (even if delegated, a delegatee cannot force a delegator HF to go below 1)*",
+          "delegatee": "the address receiving the delegated borrowing power"
+        }
+      },
+      "borrowAllowance(address,address)": {
+        "details": "returns the borrow allowance of the user",
+        "params": {
+          "fromUser": "The user to giving allowance",
+          "toUser": "The user to give allowance to"
+        },
+        "returns": {
+          "_0": "the current allowance of toUser*"
+        }
+      },
+      "burn(address,uint256)": {
+        "details": "Burns debt of `user` - The resulting rate is the weighted average between the rate of the new debt and the rate of the previous debt",
+        "params": {
+          "amount": "The amount of debt tokens getting burned*",
+          "user": "The address of the user getting his debt burned"
+        }
+      },
+      "getAverageStableRate()": {
+        "details": "Returns the average rate of all the stable rate loans.",
+        "returns": {
+          "_0": "The average stable rate*"
+        }
+      },
+      "getSupplyData()": {
+        "details": "Returns the principal, the total supply and the average stable rate*"
+      },
+      "getTotalSupplyAndAvgRate()": {
+        "details": "Returns the total supply and the average stable rate*"
+      },
+      "getTotalSupplyLastUpdated()": {
+        "details": "Returns the timestamp of the last update of the total supply",
+        "returns": {
+          "_0": "The timestamp*"
+        }
+      },
+      "getUserLastUpdated(address)": {
+        "details": "Returns the timestamp of the last update of the user",
+        "returns": {
+          "_0": "The timestamp*"
+        }
+      },
+      "getUserStableRate(address)": {
+        "details": "Returns the stable rate of the user debt",
+        "returns": {
+          "_0": "The stable rate of the user*"
+        }
+      },
+      "mint(address,address,uint256,uint256)": {
+        "details": "Mints debt token to the `onBehalfOf` address. - The resulting rate is the weighted average between the rate of the new debt and the rate of the previous debt",
+        "params": {
+          "amount": "The amount of debt tokens to mint",
+          "onBehalfOf": "The address receiving the debt tokens",
+          "rate": "The rate of the debt being minted*",
+          "user": "The address receiving the borrowed underlying, being the delegatee in case of credit delegate, or same as `onBehalfOf` otherwise"
+        }
+      },
+      "principalBalanceOf(address)": {
+        "details": "Returns the principal debt balance of the user",
+        "returns": {
+          "_0": "The debt balance of the user since the last burn/mint action*"
+        }
+      }
+    },
+    "title": "IStableDebtToken",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "notice": "Defines the interface for the stable debt token",
+    "version": 1
+  }
+}

@@ -1,0 +1,479 @@
+{
+  "contractName": "UbeswapBase",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "UBESWAP_ROUTER",
+      "outputs": [
+        {
+          "internalType": "contract IUniswapV2Router02",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"UBESWAP_ROUTER\",\"outputs\":[{\"internalType\":\"contract IUniswapV2Router02\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/helpers/UbeswapBase.sol\":\"UbeswapBase\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/helpers/UbeswapBase.sol\":{\"keccak256\":\"0x242cd1b08515c46f534ece0fa62fb86fa3cf129b6af24745cea6fdf5d4bf1bf6\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://5051244242c94ef51fb693eca9561dd894659a909a1d7db766f1f6c141800817\",\"dweb:/ipfs/QmZCd9h94Xy8K26HNQgy7C7Ns78ru3kWTYr47ZqLnVphLt\"]},\"project:/contracts/interfaces/IUniswapV2Router01.sol\":{\"keccak256\":\"0x1b6ecf4eb0458e3ad62abfcd160c2c3a52db62fa85cded9467a5dad60ea3c89a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8483c532fac618799534ffabb65bcae7aed0075d72f185dd0d6ca0381d9279fb\",\"dweb:/ipfs/Qmb91pjZFofRUDaFB9VURjj347DyGjxzoyniYFCcQbq2k2\"]},\"project:/contracts/interfaces/IUniswapV2Router02.sol\":{\"keccak256\":\"0xd4524823b1c40918e721c220fa796406f08146d9e97464cace789f96763813cf\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1d5a5c12a95a1023b446afff3ace6d2dd1488a8ada0c3ecdc3b55fc41bed0ef9\",\"dweb:/ipfs/QmVT75FivXgn6ogaQkA3ww77teKqhpqAYkXbyGirax2yXV\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: agpl-3.0\npragma solidity ^0.8.0;\n\nimport { IUniswapV2Router02 } from \"../interfaces/IUniswapV2Router02.sol\";\n\nabstract contract UbeswapBase {\n    IUniswapV2Router02 public immutable UBESWAP_ROUTER;\n\n    constructor(IUniswapV2Router02 router) {\n        UBESWAP_ROUTER = router;\n    }\n}\n",
+  "sourcePath": "/Users/kirillmadorin/Desktop/Projects/celo-camp/celo-margin-truffle/contracts/helpers/UbeswapBase.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/helpers/UbeswapBase.sol",
+    "exportedSymbols": {
+      "IUniswapV2Router02": [
+        1941
+      ],
+      "UbeswapBase": [
+        1315
+      ]
+    },
+    "id": 1316,
+    "license": "agpl-3.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1298,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:23:6"
+      },
+      {
+        "absolutePath": "project:/contracts/interfaces/IUniswapV2Router02.sol",
+        "file": "../interfaces/IUniswapV2Router02.sol",
+        "id": 1300,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 1316,
+        "sourceUnit": 1942,
+        "src": "62:74:6",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 1299,
+              "name": "IUniswapV2Router02",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "src": "71:18:6",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 1315,
+        "linearizedBaseContracts": [
+          1315
+        ],
+        "name": "UbeswapBase",
+        "nameLocation": "156:11:6",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "38964484",
+            "id": 1303,
+            "mutability": "immutable",
+            "name": "UBESWAP_ROUTER",
+            "nameLocation": "210:14:6",
+            "nodeType": "VariableDeclaration",
+            "scope": 1315,
+            "src": "174:50:6",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_IUniswapV2Router02_$1941",
+              "typeString": "contract IUniswapV2Router02"
+            },
+            "typeName": {
+              "id": 1302,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 1301,
+                "name": "IUniswapV2Router02",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 1941,
+                "src": "174:18:6"
+              },
+              "referencedDeclaration": 1941,
+              "src": "174:18:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IUniswapV2Router02_$1941",
+                "typeString": "contract IUniswapV2Router02"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1313,
+              "nodeType": "Block",
+              "src": "270:40:6",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 1311,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 1309,
+                      "name": "UBESWAP_ROUTER",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1303,
+                      "src": "280:14:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IUniswapV2Router02_$1941",
+                        "typeString": "contract IUniswapV2Router02"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 1310,
+                      "name": "router",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1306,
+                      "src": "297:6:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IUniswapV2Router02_$1941",
+                        "typeString": "contract IUniswapV2Router02"
+                      }
+                    },
+                    "src": "280:23:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IUniswapV2Router02_$1941",
+                      "typeString": "contract IUniswapV2Router02"
+                    }
+                  },
+                  "id": 1312,
+                  "nodeType": "ExpressionStatement",
+                  "src": "280:23:6"
+                }
+              ]
+            },
+            "id": 1314,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1307,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1306,
+                  "mutability": "mutable",
+                  "name": "router",
+                  "nameLocation": "262:6:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1314,
+                  "src": "243:25:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IUniswapV2Router02_$1941",
+                    "typeString": "contract IUniswapV2Router02"
+                  },
+                  "typeName": {
+                    "id": 1305,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 1304,
+                      "name": "IUniswapV2Router02",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 1941,
+                      "src": "243:18:6"
+                    },
+                    "referencedDeclaration": 1941,
+                    "src": "243:18:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IUniswapV2Router02_$1941",
+                      "typeString": "contract IUniswapV2Router02"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "242:27:6"
+            },
+            "returnParameters": {
+              "id": 1308,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "270:0:6"
+            },
+            "scope": 1315,
+            "src": "231:79:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 1316,
+        "src": "138:174:6",
+        "usedErrors": []
+      }
+    ],
+    "src": "37:276:6"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/helpers/UbeswapBase.sol",
+    "exportedSymbols": {
+      "IUniswapV2Router02": [
+        1941
+      ],
+      "UbeswapBase": [
+        1315
+      ]
+    },
+    "id": 1316,
+    "license": "agpl-3.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1298,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:23:6"
+      },
+      {
+        "absolutePath": "project:/contracts/interfaces/IUniswapV2Router02.sol",
+        "file": "../interfaces/IUniswapV2Router02.sol",
+        "id": 1300,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 1316,
+        "sourceUnit": 1942,
+        "src": "62:74:6",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 1299,
+              "name": "IUniswapV2Router02",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "src": "71:18:6",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 1315,
+        "linearizedBaseContracts": [
+          1315
+        ],
+        "name": "UbeswapBase",
+        "nameLocation": "156:11:6",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "38964484",
+            "id": 1303,
+            "mutability": "immutable",
+            "name": "UBESWAP_ROUTER",
+            "nameLocation": "210:14:6",
+            "nodeType": "VariableDeclaration",
+            "scope": 1315,
+            "src": "174:50:6",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_IUniswapV2Router02_$1941",
+              "typeString": "contract IUniswapV2Router02"
+            },
+            "typeName": {
+              "id": 1302,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 1301,
+                "name": "IUniswapV2Router02",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 1941,
+                "src": "174:18:6"
+              },
+              "referencedDeclaration": 1941,
+              "src": "174:18:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IUniswapV2Router02_$1941",
+                "typeString": "contract IUniswapV2Router02"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1313,
+              "nodeType": "Block",
+              "src": "270:40:6",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 1311,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 1309,
+                      "name": "UBESWAP_ROUTER",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1303,
+                      "src": "280:14:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IUniswapV2Router02_$1941",
+                        "typeString": "contract IUniswapV2Router02"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 1310,
+                      "name": "router",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1306,
+                      "src": "297:6:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IUniswapV2Router02_$1941",
+                        "typeString": "contract IUniswapV2Router02"
+                      }
+                    },
+                    "src": "280:23:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IUniswapV2Router02_$1941",
+                      "typeString": "contract IUniswapV2Router02"
+                    }
+                  },
+                  "id": 1312,
+                  "nodeType": "ExpressionStatement",
+                  "src": "280:23:6"
+                }
+              ]
+            },
+            "id": 1314,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1307,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1306,
+                  "mutability": "mutable",
+                  "name": "router",
+                  "nameLocation": "262:6:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1314,
+                  "src": "243:25:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IUniswapV2Router02_$1941",
+                    "typeString": "contract IUniswapV2Router02"
+                  },
+                  "typeName": {
+                    "id": 1305,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 1304,
+                      "name": "IUniswapV2Router02",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 1941,
+                      "src": "243:18:6"
+                    },
+                    "referencedDeclaration": 1941,
+                    "src": "243:18:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IUniswapV2Router02_$1941",
+                      "typeString": "contract IUniswapV2Router02"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "242:27:6"
+            },
+            "returnParameters": {
+              "id": 1308,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "270:0:6"
+            },
+            "scope": 1315,
+            "src": "231:79:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 1316,
+        "src": "138:174:6",
+        "usedErrors": []
+      }
+    ],
+    "src": "37:276:6"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.4+commit.c7e474f2.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2021-10-29T21:14:09.148Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
